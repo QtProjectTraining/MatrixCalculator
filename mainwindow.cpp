@@ -20,7 +20,6 @@ void MainWindow::on_open_action_triggered()
     QString fileName;
     fileName = QFileDialog::getOpenFileName(this, tr("文件"), "", tr("text(*.txt;*.csv)"));
     this->openFileName = fileName;
-    QMessageBox::warning(this, tr("Hi!"), fileName, QMessageBox::Yes);
     if (!fileName.isNull())
     {
         QFile file(fileName);
@@ -88,6 +87,5 @@ void MainWindow::on_transpose_action_triggered()
              }
          }
      }
-     QMessageBox::warning(this, tr("提示"), disPlayString);
      ui->matrix_show_textedit->setPlainText(disPlayString);
  }

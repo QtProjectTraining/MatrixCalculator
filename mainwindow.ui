@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>872</width>
+    <width>954</width>
     <height>482</height>
    </rect>
   </property>
@@ -33,13 +33,78 @@
      </item>
     </layout>
    </widget>
+   <widget class="QLabel" name="matrix_attributes_label">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>20</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>矩阵属性</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>60</y>
+      <width>160</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="is_phalanx_label">
+       <property name="text">
+        <string>phalanx</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="is_symmetric_label">
+       <property name="text">
+        <string>Symmetric</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="is_diagonal_label">
+       <property name="text">
+        <string>Diagonal</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="is_sparse_label">
+       <property name="text">
+        <string>sparse</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>872</width>
+     <width>954</width>
      <height>23</height>
     </rect>
    </property>
@@ -49,6 +114,7 @@
     </property>
     <addaction name="new_action"/>
     <addaction name="open_action"/>
+    <addaction name="action_E"/>
     <addaction name="separator"/>
     <addaction name="save_action"/>
     <addaction name="save_as_action"/>
@@ -177,6 +243,11 @@
   <action name="division_action">
    <property name="text">
     <string>/</string>
+   </property>
+  </action>
+  <action name="action_E">
+   <property name="text">
+    <string>编辑(&amp;E)</string>
    </property>
   </action>
  </widget>

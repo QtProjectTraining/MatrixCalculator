@@ -21,4 +21,4 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui
 
-INCLUDEPATH+=E:\eigen-eigen-5a0156e40feb\eigen-eigen-5a0156e40feb\Eigen
+INCLUDEPATH+=C:\eigen-eigen-5a0156e40feb\eigen-eigen-5a0156e40feb\Eigen
