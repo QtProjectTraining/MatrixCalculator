@@ -13,8 +13,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    csv.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    csv.h
 
 FORMS    += mainwindow.ui
+
+INCLUDEPATH+=E:\eigen-eigen-5a0156e40feb\eigen-eigen-5a0156e40feb\Eigen
