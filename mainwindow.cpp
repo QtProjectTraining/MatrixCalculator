@@ -37,9 +37,11 @@ void MainWindow::on_open_action_triggered()
         lines = csvp.read(fileName);
         m = lines.size();
         n = lines[0].size();
-        MatrixXd mat(m,n);
-        for(int i=0;i<m;i++) {
-            for(int j=0;j<n;j++) {
+        QMessageBox::warning(this, QString::number(n),QString::number(m));
+
+        MatrixXd mat(m, n);
+        for(int i=0; i<m; i++) {
+            for(int j=0; j<n; j++) {
                 str = lines[i][j].toStdString();
                 s = str.data();
                 mat(i,j) = atof(s);
@@ -84,6 +86,7 @@ void MainWindow::matrixAttribute()
         ui->is_phalanx_label->setText(NOT+PHALANX);
     k = 0;
     notDiagonalMatrix = 0;
+
     for (i = 0; i < m; i++) {
         for (j = 0; j < n; j++)
         {
@@ -136,10 +139,10 @@ void MainWindow::on_transpose_action_triggered()
  void MainWindow::Matrix_show(QString sign, Eigen::MatrixXd Matrix)
  {
      QString disPlayString;
-     for (int i=0 ;i<Matrix.cols(); i++) {
-         for (int j=0; j<Matrix.rows(); j++) {
+     for (int i=0 ;i<Matrix.rows(); i++) {
+         for (int j=0; j<Matrix.cols(); j++) {
              disPlayString.append(QString::number(Matrix(i, j)) + " ");
-             if (j == Matrix.rows() - 1) {
+             if (j == Matrix.cols() - 1) {
                  disPlayString.append("\n");
              }
          }
