@@ -27,6 +27,7 @@ void MainWindow::on_open_action_triggered()
             QString disPlayString;
             QTextStream in(&file);
             QString line = in.readLine();
+            disPlayString.append(line + "\n");
             while(!line.isNull()) {
                 line = in.readLine();
                 disPlayString.append(line);
