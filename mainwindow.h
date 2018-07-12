@@ -29,6 +29,14 @@ private slots:
 
     void on_transpose_action_triggered();
 
+    void on_determinant_action_triggered();
+
+    void on_adjoint_action_triggered();
+
+    void on_inverse_action_triggered();
+
+    void on_matrix_rank_action_triggered();
+
 private:
     Ui::MainWindow *ui;
     QString openFileName;

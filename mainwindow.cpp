@@ -89,3 +89,32 @@ void MainWindow::on_transpose_action_triggered()
      }
      ui->matrix_show_textedit->setPlainText(disPlayString);
  }
+
+void MainWindow::on_determinant_action_triggered()
+{
+    QString tempStr;
+    ui->matrix_show_textedit->setText(tempStr.setNum(mat.determinant()));
+}
+
+void MainWindow::on_adjoint_action_triggered()
+{
+
+            Matrix_show(this->mat.adjoint());
+}
+
+void MainWindow::on_inverse_action_triggered()
+{
+             Matrix_show(this->mat.inverse());
+}
+
+void MainWindow::on_matrix_rank_action_triggered()
+{
+    MatrixXd mat(m,n);
+
+    FullPivLU<MatrixXd> lu(mat);
+     std::cout << "By default, the rank of A is found to be " << lu.rank() << std::endl;
+    lu.setThreshold(1e-5);
+    QString tempStr;
+    ui->matrix_show_textedit->setText(tempStr.setNum(lu.rank()));
+
+}
