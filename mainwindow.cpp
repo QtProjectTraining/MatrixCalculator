@@ -78,11 +78,11 @@ void MainWindow::on_save_as_action_triggered()
 */
 void MainWindow::on_transpose_action_triggered()
 {
-    if(this->matrix_is_exist()) {
-        this->Matrix_show(this->TRANSPOSE, this->mat.transpose());
+    if(!this->matrix_is_exist()) {
+        QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
         return;
     }
-    QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
+    this->Matrix_show(this->TRANSPOSE, this->mat.transpose());
 }
 
 /*
@@ -107,6 +107,10 @@ void MainWindow::on_transpose_action_triggered()
 */
 void MainWindow::on_determinant_action_triggered()
 {
+    if(!this->matrix_is_exist()) {
+        QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
+        return;
+    }
     QString tempStr;
     ui->matrix_show_textedit->append(this->DETERMINANT + tempStr.setNum(mat.determinant()));
 }
@@ -117,6 +121,10 @@ void MainWindow::on_determinant_action_triggered()
 void MainWindow::on_adjoint_action_triggered()
 {
 
+    if(!this->matrix_is_exist()) {
+        QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
+        return;
+    }
     Matrix_show(this->ADJOINT, this->mat.adjoint());
 }
 
@@ -125,6 +133,10 @@ void MainWindow::on_adjoint_action_triggered()
  */
 void MainWindow::on_inverse_action_triggered()
 {
+    if(!this->matrix_is_exist()) {
+        QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
+        return;
+    }
     Matrix_show(this->INVERSE, this->mat.inverse());
 }
 
@@ -133,6 +145,10 @@ void MainWindow::on_inverse_action_triggered()
  */
 void MainWindow::on_matrix_rank_action_triggered()
 {
+    if(!this->matrix_is_exist()) {
+        QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
+        return;
+    }
     MatrixXd mat(m,n);
 
     FullPivLU<MatrixXd> lu(mat);
