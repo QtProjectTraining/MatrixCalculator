@@ -21,7 +21,15 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void Matrix_show(Eigen::MatrixXd Matrix);
+    void Matrix_show(QString, Eigen::MatrixXd Matrix);
+    bool matrix_is_exist();
+    const QString ORIGIN = tr("原矩阵\n ");
+    const QString RANK = tr("矩阵的秩\n");
+    const QString DETERMINANT = tr("行列式的值\n");
+    const QString TRANSPOSE = tr("转置\n");
+    const QString INVERSE = tr("方阵的逆阵\n");
+    const QString ADJOINT = tr("伴随阵\n");
+
 private slots:
     void on_open_action_triggered();
 

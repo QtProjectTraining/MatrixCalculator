@@ -201,6 +201,9 @@
    </property>
   </action>
   <action name="transpose_action">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>转置</string>
    </property>

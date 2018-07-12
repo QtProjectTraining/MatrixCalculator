@@ -15,6 +15,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/*
+* 打开文件
+*/
 void MainWindow::on_open_action_triggered()
 {
     QString fileName;
@@ -35,20 +38,21 @@ void MainWindow::on_open_action_triggered()
         m = lines.size();
         n = lines[0].size();
         MatrixXd mat(m,n);
-        for(int i=0;i<m;i++)
-        {
-            for(int j=0;j<n;j++)
-            {
-                 str = lines[i][j].toStdString();
-                 s = str.data();
-                 mat(i,j) = atof(s);
-                }
-             }
-             this->mat = mat;
-             Matrix_show(this->mat);
+        for(int i=0;i<m;i++) {
+            for(int j=0;j<n;j++) {
+                str = lines[i][j].toStdString();
+                s = str.data();
+                mat(i,j) = atof(s);
+            }
+        }
+        this->mat = mat;
+        Matrix_show(this->ORIGIN, this->mat);
     }
 }
 
+/*
+* 另存为
+*/
 void MainWindow::on_save_as_action_triggered()
 {
     QFileDialog fileDialog;
@@ -59,7 +63,7 @@ void MainWindow::on_save_as_action_triggered()
     }
     QFile file(fileName);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QMessageBox::warning(this, tr("Error"), tr("打开文件失败"));
+        QMessageBox::warning(this, tr("Error"), tr("打开文件失败"), QMessageBox::Ok);
         return;
     }
     QTextStream textStream(&file);
@@ -69,15 +73,23 @@ void MainWindow::on_save_as_action_triggered()
     file.close();
 }
 
+/*
+* 转置
+*/
 void MainWindow::on_transpose_action_triggered()
 {
-    Matrix_show(this->mat.transpose());
+    if(this->matrix_is_exist()) {
+        this->Matrix_show(this->TRANSPOSE, this->mat.transpose());
+        return;
+    }
+    QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
 }
 
-
- void MainWindow::Matrix_show(Eigen::MatrixXd Matrix)
+/*
+ * 在文本框中显示矩阵
+ */
+ void MainWindow::Matrix_show(QString sign, Eigen::MatrixXd Matrix)
  {
-     ui->matrix_show_textedit->clear();
      QString disPlayString;
      for (int i=0 ;i<Matrix.cols(); i++) {
          for (int j=0; j<Matrix.rows(); j++) {
@@ -87,34 +99,55 @@ void MainWindow::on_transpose_action_triggered()
              }
          }
      }
-     ui->matrix_show_textedit->setPlainText(disPlayString);
+     ui->matrix_show_textedit->append(sign + disPlayString);
  }
 
+/*
+* 行列式的值
+*/
 void MainWindow::on_determinant_action_triggered()
 {
     QString tempStr;
-    ui->matrix_show_textedit->setText(tempStr.setNum(mat.determinant()));
+    ui->matrix_show_textedit->append(this->DETERMINANT + tempStr.setNum(mat.determinant()));
 }
 
+/*
+* 伴随阵
+*/
 void MainWindow::on_adjoint_action_triggered()
 {
 
-            Matrix_show(this->mat.adjoint());
+    Matrix_show(this->ADJOINT, this->mat.adjoint());
 }
 
+/*
+ * 逆阵
+ */
 void MainWindow::on_inverse_action_triggered()
 {
-             Matrix_show(this->mat.inverse());
+    Matrix_show(this->INVERSE, this->mat.inverse());
 }
 
+/*
+ * 矩阵的秩
+ */
 void MainWindow::on_matrix_rank_action_triggered()
 {
     MatrixXd mat(m,n);
 
     FullPivLU<MatrixXd> lu(mat);
-     std::cout << "By default, the rank of A is found to be " << lu.rank() << std::endl;
+    std::cout << "By default, the rank of A is found to be " << lu.rank() << std::endl;
     lu.setThreshold(1e-5);
     QString tempStr;
-    ui->matrix_show_textedit->setText(tempStr.setNum(lu.rank()));
-
+    ui->matrix_show_textedit->append(this->RANK + tempStr.setNum(lu.rank()));
 }
+
+/*
+ * 判断是否有要处理的矩阵
+ * */
+ bool MainWindow::matrix_is_exist() {
+     if (!this->mat.cols() || !this->mat.rows()) {
+         return false;
+     }
+     return true;
+ }
