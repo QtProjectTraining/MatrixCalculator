@@ -178,18 +178,15 @@ void MainWindow::on_adjoint_action_triggered()
  */
 void MainWindow::on_inverse_action_triggered()
 {
-<<<<<<< HEAD
-    if(mat.determinant()==0)
-        QMessageBox::warning(this, tr("Warning"), tr("No inverse!"));
-    else
-        Matrix_show(this->INVERSE, this->mat.inverse());
-=======
     if(!this->matrix_is_exist()) {
         QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
         return;
     }
+    if(mat.determinant()==0) {
+        QMessageBox::warning(this, tr("Warning"), tr("No inverse!"));
+        return;
+    }
     Matrix_show(this->INVERSE, this->mat.inverse());
->>>>>>> 673e0998b39ddf41501ea3b2633b1e45f450d7de
 }
 
 /*
