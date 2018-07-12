@@ -30,7 +30,7 @@ void MainWindow::on_open_action_triggered()
             disPlayString.append(line + "\n");
             while(!line.isNull()) {
                 line = in.readLine();
-                disPlayString.append(line);
+                disPlayString.append(line + "\n");
             }
             ui->matrix_show_textedit->clear();
             ui->matrix_show_textedit->setPlainText(disPlayString);
