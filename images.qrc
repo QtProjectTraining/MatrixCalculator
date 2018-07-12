@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>images/change.png</file>
+        <file>images/edit.png</file>
+        <file>images/NEW.png</file>
+        <file>images/open.png</file>
+        <file>images/save.png</file>
+        <file>images/save-as.png</file>
+        <file>images/伴随分析.png</file>
+        <file>images/方块.png</file>
+        <file>images/行.png</file>
+        <file>images/行列表.png</file>
+        <file>images/行列互换.png</file>
+        <file>images/矩阵.png</file>
+        <file>images/列.png</file>
+        <file>images/逆转.png</file>
+        <file>images/清空.png</file>
+    </qresource>
+</RCC>

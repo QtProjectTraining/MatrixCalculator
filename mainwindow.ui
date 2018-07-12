@@ -118,6 +118,7 @@
     <addaction name="separator"/>
     <addaction name="save_action"/>
     <addaction name="save_as_action"/>
+    <addaction name="clear_action"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -170,66 +171,139 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="new_action">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/NEW.png</normaloff>:/icons/images/NEW.png</iconset>
+   </property>
    <property name="text">
     <string>新建(&amp;N)</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
   </action>
   <action name="open_action">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/open.png</normaloff>:/icons/images/open.png</iconset>
+   </property>
    <property name="text">
     <string>打开(&amp;O)</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="save_action">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/save.png</normaloff>:/icons/images/save.png</iconset>
+   </property>
    <property name="text">
     <string>保存(&amp;S)</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
   <action name="save_as_action">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/save-as.png</normaloff>:/icons/images/save-as.png</iconset>
+   </property>
    <property name="text">
     <string>另存为(&amp;R)</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
   </action>
   <action name="row_action">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/行.png</normaloff>:/icons/images/行.png</iconset>
+   </property>
    <property name="text">
     <string>行变换</string>
    </property>
+   <property name="shortcut">
+    <string>Alt+R</string>
+   </property>
   </action>
   <action name="column_action">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/列.png</normaloff>:/icons/images/列.png</iconset>
+   </property>
    <property name="text">
     <string>列变换
 </string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+C</string>
    </property>
   </action>
   <action name="transpose_action">
    <property name="enabled">
     <bool>true</bool>
    </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/change.png</normaloff>:/icons/images/change.png</iconset>
+   </property>
    <property name="text">
     <string>转置</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
   </action>
   <action name="inverse_action">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/逆转.png</normaloff>:/icons/images/逆转.png</iconset>
+   </property>
    <property name="text">
     <string>方阵的逆阵</string>
    </property>
   </action>
   <action name="adjoint_action">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/伴随分析.png</normaloff>:/icons/images/伴随分析.png</iconset>
+   </property>
    <property name="text">
     <string>伴随阵</string>
    </property>
+   <property name="shortcut">
+    <string>Alt+B</string>
+   </property>
   </action>
   <action name="determinant_action">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/矩阵.png</normaloff>:/icons/images/矩阵.png</iconset>
+   </property>
    <property name="text">
     <string>行列式的值</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+H</string>
    </property>
   </action>
   <action name="matrix_rank_action">
    <property name="text">
     <string>矩阵的秩</string>
    </property>
+   <property name="shortcut">
+    <string>Alt+R</string>
+   </property>
   </action>
   <action name="addtion_action">
    <property name="text">
+    <string>+</string>
+   </property>
+   <property name="shortcut">
     <string>+</string>
    </property>
   </action>
@@ -237,9 +311,15 @@
    <property name="text">
     <string>-</string>
    </property>
+   <property name="shortcut">
+    <string>-</string>
+   </property>
   </action>
   <action name="multiplication_action">
    <property name="text">
+    <string>*</string>
+   </property>
+   <property name="shortcut">
     <string>*</string>
    </property>
   </action>
@@ -247,14 +327,38 @@
    <property name="text">
     <string>/</string>
    </property>
+   <property name="shortcut">
+    <string>/</string>
+   </property>
   </action>
   <action name="action_E">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/edit.png</normaloff>:/icons/images/edit.png</iconset>
+   </property>
    <property name="text">
     <string>编辑(&amp;E)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="clear_action">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/清空.png</normaloff>:/icons/images/清空.png</iconset>
+   </property>
+   <property name="text">
+    <string>清空(&amp;Q)</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+C</string>
    </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

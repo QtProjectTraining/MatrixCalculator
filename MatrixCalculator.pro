@@ -22,3 +22,6 @@ HEADERS  += mainwindow.h \
 FORMS    += mainwindow.ui
 
 INCLUDEPATH+=C:\eigen-eigen-5a0156e40feb\eigen-eigen-5a0156e40feb\Eigen
+
+RESOURCES += \
+    images.qrc
