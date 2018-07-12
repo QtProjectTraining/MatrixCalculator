@@ -47,6 +47,7 @@ void MainWindow::on_open_action_triggered()
         }
         this->mat = mat;
         Matrix_show(this->ORIGIN, this->mat);
+        this->matrixAttribute();
     }
 }
 
@@ -71,6 +72,50 @@ void MainWindow::on_save_as_action_triggered()
     textStream << str;
     QMessageBox::warning(this, tr("提示"), tr("保存文件成功"));
     file.close();
+}
+/*
+* 获取矩阵属性
+*/
+void MainWindow::matrixAttribute()
+{
+    if (m == n)
+        ui->is_phalanx_label->setText(PHALANX);
+    else
+        ui->is_phalanx_label->setText(NOT+PHALANX);
+    k = 0;
+    notDiagonalMatrix = 0;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < n; j++)
+        {
+            if (mat(i,j) == mat(j,i))
+                k++;
+            if ((i != j) && (mat(i,j) != 0))
+                notDiagonalMatrix = 1;
+        }
+    }
+    if (k == m*n)
+        ui->is_symmetric_label->setText(SYMMETRIC);
+    else
+        ui->is_symmetric_label->setText(NOT+SYMMETRIC);
+    if (notDiagonalMatrix)
+    {
+        ui->is_diagonal_label->setText(NOT+DIAGONAL);
+        for (i = 0; i < m; i++)
+        for (j = 0; j < n; j++)
+            {
+                if (mat(i,j) == 0)
+                    zero++;
+            }
+        if ((m*n - zero) / m*n <= 0.05)
+             ui->is_sparse_label->setText(SPARSE);
+        else
+            ui->is_sparse_label->setText(NOT+SPARSE);
+    }
+    else
+    {
+          ui->is_diagonal_label->setText(DIAGONAL);
+          ui->is_sparse_label->setText(NOT+SPARSE);
+    }
 }
 
 /*
@@ -125,7 +170,10 @@ void MainWindow::on_adjoint_action_triggered()
  */
 void MainWindow::on_inverse_action_triggered()
 {
-    Matrix_show(this->INVERSE, this->mat.inverse());
+    if(mat.determinant()==0)
+        QMessageBox::warning(this, tr("Warning"), tr("No inverse!"));
+    else
+        Matrix_show(this->INVERSE, this->mat.inverse());
 }
 
 /*

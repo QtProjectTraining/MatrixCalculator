@@ -22,13 +22,19 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void Matrix_show(QString, Eigen::MatrixXd Matrix);
+    void MainWindow::matrixAttribute();
     bool matrix_is_exist();
     const QString ORIGIN = tr("原矩阵\n ");
     const QString RANK = tr("矩阵的秩\n");
     const QString DETERMINANT = tr("行列式的值\n");
     const QString TRANSPOSE = tr("转置\n");
-    const QString INVERSE = tr("方阵的逆阵\n");
     const QString ADJOINT = tr("伴随阵\n");
+    const QString INVERSE = tr("方阵的逆阵\n");
+    const QString NOT = tr("不是");
+    const QString PHALANX = tr("方阵");
+    const QString SYMMETRIC = tr("对称阵\t");
+    const QString DIAGONAL = tr("对角阵\t");
+    const QString SPARSE = tr("稀疏阵");
 
 private slots:
     void on_open_action_triggered();
@@ -51,6 +57,9 @@ private:
     Eigen::MatrixXd mat;
     int m;
     int n;
+    int i, j, k;
+    int zero;
+    int notDiagonalMatrix;
 };
 
 #endif // MAINWINDOW_H
