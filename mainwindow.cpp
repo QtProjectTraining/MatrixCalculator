@@ -37,7 +37,6 @@ void MainWindow::on_open_action_triggered()
         lines = csvp.read(fileName);
         m = lines.size();
         n = lines[0].size();
-        QMessageBox::warning(this, QString::number(n),QString::number(m));
 
         MatrixXd mat(m, n);
         for(int i=0; i<m; i++) {
@@ -219,3 +218,13 @@ void MainWindow::on_matrix_rank_action_triggered()
      }
      return true;
  }
+
+/*
+* 矩阵四则运算
+*/
+void MainWindow::on_double_calculate_action_triggered()
+{
+    // 设置后面的页面为不可点击
+    this->doubleForm.setWindowModality(Qt::ApplicationModal);
+    this->doubleForm.show();
+}

@@ -10,6 +10,7 @@
 #include <iostream>
 #include "csv.h"
 #include <sstream>
+#include "doubleform.h"
 namespace Ui {
 class MainWindow;
 }
@@ -31,9 +32,9 @@ public:
     const QString ADJOINT = tr("伴随阵\n");
     const QString INVERSE = tr("方阵的逆阵\n");
     const QString NOT = tr("不是");
-    const QString PHALANX = tr("方阵");
-    const QString SYMMETRIC = tr("对称阵\t");
-    const QString DIAGONAL = tr("对角阵\t");
+    const QString PHALANX = tr("方阵 ");
+    const QString SYMMETRIC = tr("对称阵 ");
+    const QString DIAGONAL = tr("对角阵 ");
     const QString SPARSE = tr("稀疏阵");
 
 private slots:
@@ -51,8 +52,11 @@ private slots:
 
     void on_matrix_rank_action_triggered();
 
+    void on_double_calculate_action_triggered();
+
 private:
     Ui::MainWindow *ui;
+    DoubleForm doubleForm;
     QString openFileName;
     Eigen::MatrixXd mat;
     int m;

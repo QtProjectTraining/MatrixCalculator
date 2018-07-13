@@ -142,10 +142,7 @@
     <property name="title">
      <string>双运算</string>
     </property>
-    <addaction name="addtion_action"/>
-    <addaction name="subtraction_action"/>
-    <addaction name="multiplication_action"/>
-    <addaction name="division_action"/>
+    <addaction name="double_calculate_action"/>
    </widget>
    <widget class="QMenu" name="menu_5">
     <property name="title">
@@ -299,36 +296,13 @@
     <string>Alt+R</string>
    </property>
   </action>
-  <action name="addtion_action">
+  <action name="double_calculate_action">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/四则运算.png</normaloff>:/icons/images/四则运算.png</iconset>
+   </property>
    <property name="text">
-    <string>+</string>
-   </property>
-   <property name="shortcut">
-    <string>+</string>
-   </property>
-  </action>
-  <action name="subtraction_action">
-   <property name="text">
-    <string>-</string>
-   </property>
-   <property name="shortcut">
-    <string>-</string>
-   </property>
-  </action>
-  <action name="multiplication_action">
-   <property name="text">
-    <string>*</string>
-   </property>
-   <property name="shortcut">
-    <string>*</string>
-   </property>
-  </action>
-  <action name="division_action">
-   <property name="text">
-    <string>/</string>
-   </property>
-   <property name="shortcut">
-    <string>/</string>
+    <string>四则运算(&amp;W)</string>
    </property>
   </action>
   <action name="action_E">

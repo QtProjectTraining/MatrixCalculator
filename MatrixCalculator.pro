@@ -14,12 +14,15 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    csv.cpp
+    csv.cpp \
+    doubleform.cpp
 
 HEADERS  += mainwindow.h \
-    csv.h
+    csv.h \
+    doubleform.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    doubleform.ui
 
 INCLUDEPATH+=C:\eigen-eigen-5a0156e40feb\eigen-eigen-5a0156e40feb\Eigen
 

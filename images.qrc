@@ -15,5 +15,6 @@
         <file>images/列.png</file>
         <file>images/逆转.png</file>
         <file>images/清空.png</file>
+        <file>images/四则运算.png</file>
     </qresource>
 </RCC>
