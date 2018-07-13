@@ -26,6 +26,9 @@ public:
     void MainWindow::matrixAttribute();
     bool matrix_is_exist();
     Eigen::MatrixXd fileToMatrix(QString);
+    QString open();
+    bool save(const QString&);
+    bool save_as();
     const QString ORIGIN = tr("原矩阵\n ");
     const QString RANK = tr("矩阵的秩\n");
     const QString DETERMINANT = tr("行列式的值\n");
@@ -33,9 +36,9 @@ public:
     const QString ADJOINT = tr("伴随阵\n");
     const QString INVERSE = tr("方阵的逆阵\n");
     const QString NOT = tr("不是");
-    const QString PHALANX = tr("方阵 ");
-    const QString SYMMETRIC = tr("对称阵 ");
-    const QString DIAGONAL = tr("对角阵 ");
+    const QString PHALANX = tr("方阵\n");
+    const QString SYMMETRIC = tr("对称阵\n");
+    const QString DIAGONAL = tr("对角阵\n");
     const QString SPARSE = tr("稀疏阵");
 
 private slots:

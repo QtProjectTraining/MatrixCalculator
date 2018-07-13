@@ -18,24 +18,62 @@ MainWindow::~MainWindow()
 /*
 * 打开文件
 */
-void MainWindow::on_open_action_triggered()
-{
+QString MainWindow::open() {
     QString fileName;
     fileName = QFileDialog::getOpenFileName(this, tr("文件"), "", tr("text(*.txt;*.csv)"));
-    this->openFileName = fileName;
     if (!fileName.isNull())
     {
         QFile file(fileName);
         if (!file.open(QFile::ReadOnly | QFile::Text)) {
             QMessageBox::warning(this, tr("Error"), tr("Read file failed:&1").arg(file.errorString()));
-            return;
+            return NULL;
         }
-        this->mat = this->fileToMatrix(fileName);
-        this->m = this->mat.rows();
-        this->n = this->mat.cols();
-        Matrix_show(this->ORIGIN, this->mat);
-        this->matrixAttribute();
+        return fileName;
     }
+}
+
+/*
+* 保存文件
+*/
+bool MainWindow::save(const QString &fileName){
+    QFile file(fileName);
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
+        QMessageBox::warning(this, tr("Error"),
+                             tr("无法写入文件 %1：/n %2").arg(fileName).arg(file.errorString()));
+        return false;
+    }
+    QTextStream out(&file);
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    out << ui->matrix_show_textedit->toPlainText();
+    QApplication::restoreOverrideCursor();
+    return true;
+}
+
+bool MainWindow::save_as() {
+    QFileDialog fileDialog;
+    QString fileName = fileDialog.getSaveFileName(this,
+                       tr("另存为 "), this->openFileName, tr("Text File(*.txt;*.csv)"));
+    if (fileName.trimmed() == "") {
+        return false;
+    }
+    return this->save(fileName);
+}
+
+
+/*
+* 主页面打开文件按钮点击事件
+*/
+void MainWindow::on_open_action_triggered()
+{
+    QString fileName = this->open();
+    if (fileName == NULL)
+        return;
+    this->openFileName = fileName;
+    this->mat = this->fileToMatrix(fileName);
+    this->m = this->mat.rows();
+    this->n = this->mat.cols();
+    Matrix_show(this->ORIGIN, this->mat);
+    this->matrixAttribute();
 }
 
 /*
@@ -62,27 +100,13 @@ Eigen::MatrixXd MainWindow::fileToMatrix(QString fileName) {
 }
 
 /*
-* 另存为
+* 主页另存为按钮点击事件
 */
 void MainWindow::on_save_as_action_triggered()
 {
-    QFileDialog fileDialog;
-    QString fileName = fileDialog.getSaveFileName(this,
-                       tr("Open file"), this->openFileName, tr("Text File(*.txt;*.csv)"));
-    if (fileName.trimmed() == "") {
-        return;
-    }
-    QFile file(fileName);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QMessageBox::warning(this, tr("Error"), tr("打开文件失败"), QMessageBox::Ok);
-        return;
-    }
-    QTextStream textStream(&file);
-    QString str = ui->matrix_show_textedit->toPlainText();
-    textStream << str;
-    QMessageBox::warning(this, tr("提示"), tr("保存文件成功"));
-    file.close();
+    this->save_as();
 }
+
 /*
 * 获取矩阵属性
 */
