@@ -112,43 +112,77 @@ void MainWindow::on_save_as_action_triggered()
 */
 void MainWindow::matrixAttribute()
 {
+    //PHALANX
     if (m == n)
         ui->is_phalanx_label->setText(PHALANX);
     else
         ui->is_phalanx_label->setText(NOT+PHALANX);
-    k = 0;
-    notDiagonalMatrix = 0;
 
-    for (i = 0; i < m; i++) {
+    //SYMMETRIC
+    k = 0;
+    if (m == n)
+    {
+      for (i = 0; i < m; i++)
+      {
         for (j = 0; j < n; j++)
         {
             if (mat(i,j) == mat(j,i))
                 k++;
+        }
+      }
+      if (k == m*n)
+          ui->is_symmetric_label->setText(SYMMETRIC);
+      else
+          ui->is_symmetric_label->setText(NOT+SYMMETRIC);
+    }
+    else
+        ui->is_symmetric_label->setText(NOT+SYMMETRIC);
+
+    //DiagonalMatrix
+    notDiagonalMatrix = 0;
+    if (m == n)
+    {
+      for (i = 0; i < m; i++)
+      {
+        for (j = 0; j < n; j++)
+        {
             if ((i != j) && (mat(i,j) != 0))
                 notDiagonalMatrix = 1;
         }
-    }
-    if (k == m*n)
-        ui->is_symmetric_label->setText(SYMMETRIC);
-    else
-        ui->is_symmetric_label->setText(NOT+SYMMETRIC);
-    if (notDiagonalMatrix)
-    {
+      }
+      if (notDiagonalMatrix)
+      {
         ui->is_diagonal_label->setText(NOT+DIAGONAL);
+      }
+      else
+      {
+        ui->is_diagonal_label->setText(DIAGONAL);
+      }
+    }
+    else
+        ui->is_diagonal_label->setText(NOT+DIAGONAL);
+    //SPARSE
+    if (!notDiagonalMatrix)
+    {
+        zero=0.0;
         for (i = 0; i < m; i++)
-        for (j = 0; j < n; j++)
+        {
+          for (j = 0; j < n; j++)
             {
                 if (mat(i,j) == 0)
+                {
                     zero++;
+                }
             }
-        if ((m*n - zero) / m*n <= 0.05)
+        }
+
+        if ((double)((m*n - zero)/(m*n)) <= 0.05)
              ui->is_sparse_label->setText(SPARSE);
         else
             ui->is_sparse_label->setText(NOT+SPARSE);
     }
     else
     {
-          ui->is_diagonal_label->setText(DIAGONAL);
           ui->is_sparse_label->setText(NOT+SPARSE);
     }
 }
@@ -191,6 +225,11 @@ void MainWindow::on_determinant_action_triggered()
         QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
         return;
     }
+    if(m!=n)
+    {
+        QMessageBox::warning(this, tr("Warning"), tr("No Determinant!"));
+        return;
+    }
     QString tempStr;
     ui->matrix_show_textedit->append(this->DETERMINANT + tempStr.setNum(mat.determinant()));
 }
@@ -205,6 +244,11 @@ void MainWindow::on_adjoint_action_triggered()
         QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
         return;
     }
+    if(m!=n)
+    {
+        QMessageBox::warning(this, tr("Warning"), tr("No adjoint!"));
+        return;
+    }
     Matrix_show(this->ADJOINT, this->mat.adjoint());
 }
 
@@ -217,7 +261,8 @@ void MainWindow::on_inverse_action_triggered()
         QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
         return;
     }
-    if(mat.determinant()==0) {
+    if(m!=n)
+    {
         QMessageBox::warning(this, tr("Warning"), tr("No inverse!"));
         return;
     }
@@ -233,11 +278,7 @@ void MainWindow::on_matrix_rank_action_triggered()
         QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
         return;
     }
-    MatrixXd mat(m,n);
-
     FullPivLU<MatrixXd> lu(mat);
-    std::cout << "By default, the rank of A is found to be " << lu.rank() << std::endl;
-    lu.setThreshold(1e-5);
     QString tempStr;
     ui->matrix_show_textedit->append(this->RANK + tempStr.setNum(lu.rank()));
 }

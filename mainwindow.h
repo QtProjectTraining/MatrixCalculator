@@ -65,8 +65,9 @@ private:
     Eigen::MatrixXd mat;
     int m;
     int n;
+
     int i, j, k;
-    int zero;
+    double zero;
     int notDiagonalMatrix;
 };
 
