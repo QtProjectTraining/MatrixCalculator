@@ -27,8 +27,8 @@ public:
     bool matrix_is_exist();
     Eigen::MatrixXd fileToMatrix(QString);
     QString open();
-    bool save(const QString&);
-    bool save_as();
+    bool save(const QString&, QString);
+    bool save_as(QString);
     const QString ORIGIN = tr("原矩阵\n ");
     const QString RANK = tr("矩阵的秩\n");
     const QString DETERMINANT = tr("行列式的值\n");

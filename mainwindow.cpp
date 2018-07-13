@@ -35,7 +35,7 @@ QString MainWindow::open() {
 /*
 * 保存文件
 */
-bool MainWindow::save(const QString &fileName){
+bool MainWindow::save(const QString &fileName, QString content){
     QFile file(fileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
         QMessageBox::warning(this, tr("Error"),
@@ -44,19 +44,19 @@ bool MainWindow::save(const QString &fileName){
     }
     QTextStream out(&file);
     QApplication::setOverrideCursor(Qt::WaitCursor);
-    out << ui->matrix_show_textedit->toPlainText();
+    out << content;
     QApplication::restoreOverrideCursor();
     return true;
 }
 
-bool MainWindow::save_as() {
+bool MainWindow::save_as(QString content) {
     QFileDialog fileDialog;
     QString fileName = fileDialog.getSaveFileName(this,
                        tr("另存为 "), this->openFileName, tr("Text File(*.txt;*.csv)"));
     if (fileName.trimmed() == "") {
         return false;
     }
-    return this->save(fileName);
+    return this->save(fileName, content);
 }
 
 
@@ -104,7 +104,7 @@ Eigen::MatrixXd MainWindow::fileToMatrix(QString fileName) {
 */
 void MainWindow::on_save_as_action_triggered()
 {
-    this->save_as();
+    this->save_as(ui->matrix_show_textedit->toPlainText());
 }
 
 /*
