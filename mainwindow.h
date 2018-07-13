@@ -25,6 +25,7 @@ public:
     void Matrix_show(QString, Eigen::MatrixXd Matrix);
     void MainWindow::matrixAttribute();
     bool matrix_is_exist();
+    Eigen::MatrixXd fileToMatrix(QString);
     const QString ORIGIN = tr("原矩阵\n ");
     const QString RANK = tr("矩阵的秩\n");
     const QString DETERMINANT = tr("行列式的值\n");

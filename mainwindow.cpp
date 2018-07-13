@@ -30,26 +30,35 @@ void MainWindow::on_open_action_triggered()
             QMessageBox::warning(this, tr("Error"), tr("Read file failed:&1").arg(file.errorString()));
             return;
         }
-        CSVParser csvp(QString(","));
-        QList<QStringList> lines;
-        std::string str;
-        const char* s = new char();
-        lines = csvp.read(fileName);
-        m = lines.size();
-        n = lines[0].size();
-
-        MatrixXd mat(m, n);
-        for(int i=0; i<m; i++) {
-            for(int j=0; j<n; j++) {
-                str = lines[i][j].toStdString();
-                s = str.data();
-                mat(i,j) = atof(s);
-            }
-        }
-        this->mat = mat;
+        this->mat = this->fileToMatrix(fileName);
+        this->m = this->mat.rows();
+        this->n = this->mat.cols();
         Matrix_show(this->ORIGIN, this->mat);
         this->matrixAttribute();
     }
+}
+
+/*
+* 文件转成矩阵对象
+*/
+Eigen::MatrixXd MainWindow::fileToMatrix(QString fileName) {
+    CSVParser csvp(QString(","));
+    QList<QStringList> lines;
+    std::string str;
+    const char* s = new char();
+    lines = csvp.read(fileName);
+    int row = lines.size();
+    int col = lines[0].size();
+
+    MatrixXd mat(row, col);
+    for(int i=0; i<row; i++) {
+        for(int j=0; j<col; j++) {
+            str = lines[i][j].toStdString();
+            s = str.data();
+            mat(i,j) = atof(s);
+        }
+    }
+    return mat;
 }
 
 /*
