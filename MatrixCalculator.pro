@@ -20,12 +20,13 @@ SOURCES += main.cpp\
     oneform.cpp \
     number_matrix_form.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     csv.h \
     doubleform.h \
     mymatrix.h \
     oneform.h \
-    number_matrix_form.h
+    number_matrix_form.h \
+    mainwindow.h
 
 FORMS    += mainwindow.ui \
     doubleform.ui \
