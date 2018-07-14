@@ -36,6 +36,7 @@ QString DoubleForm::open() {
         }
         return fileName;
     }
+    return NULL;
 }
 
 /*

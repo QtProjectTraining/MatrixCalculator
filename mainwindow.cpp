@@ -30,6 +30,7 @@ QString MainWindow::open() {
         }
         return fileName;
     }
+    return NULL;
 }
 
 /*

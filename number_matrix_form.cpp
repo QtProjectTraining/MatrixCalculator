@@ -38,6 +38,7 @@ QString Number_Matrix_Form::open() {
         }
         return fileName;
     }
+    return NULL;
 }
 
 /*
