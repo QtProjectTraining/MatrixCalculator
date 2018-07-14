@@ -11,6 +11,8 @@
 #include "csv.h"
 #include <sstream>
 #include "doubleform.h"
+#include "mymatrix.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -25,7 +27,6 @@ public:
     void Matrix_show(QString, Eigen::MatrixXd Matrix);
     void MainWindow::matrixAttribute();
     bool matrix_is_exist();
-    Eigen::MatrixXd fileToMatrix(QString);
     QString open();
     bool save(const QString&, QString);
     bool save_as(QString);

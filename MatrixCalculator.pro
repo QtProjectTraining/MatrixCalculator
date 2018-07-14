@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     csv.cpp \
-    doubleform.cpp
+    doubleform.cpp \
+    mymatrix.cpp
 
 HEADERS  += mainwindow.h \
     csv.h \
-    doubleform.h
+    doubleform.h \
+    mymatrix.h
 
 FORMS    += mainwindow.ui \
     doubleform.ui

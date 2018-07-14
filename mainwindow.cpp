@@ -69,34 +69,11 @@ void MainWindow::on_open_action_triggered()
     if (fileName == NULL)
         return;
     this->openFileName = fileName;
-    this->mat = this->fileToMatrix(fileName);
+    this->mat = MyMatrix::fileToMatrix(fileName);
     this->m = this->mat.rows();
     this->n = this->mat.cols();
     Matrix_show(this->ORIGIN, this->mat);
     this->matrixAttribute();
-}
-
-/*
-* 文件转成矩阵对象
-*/
-Eigen::MatrixXd MainWindow::fileToMatrix(QString fileName) {
-    CSVParser csvp(QString(","));
-    QList<QStringList> lines;
-    std::string str;
-    const char* s = new char();
-    lines = csvp.read(fileName);
-    int row = lines.size();
-    int col = lines[0].size();
-
-    MatrixXd mat(row, col);
-    for(int i=0; i<row; i++) {
-        for(int j=0; j<col; j++) {
-            str = lines[i][j].toStdString();
-            s = str.data();
-            mat(i,j) = atof(s);
-        }
-    }
-    return mat;
 }
 
 /*
@@ -299,6 +276,7 @@ void MainWindow::on_matrix_rank_action_triggered()
 void MainWindow::on_double_calculate_action_triggered()
 {
     // 设置后面的页面为不可点击
+    this->doubleForm.transMatrixFromMain(this->mat, this->openFileName);
     this->doubleForm.setWindowModality(Qt::ApplicationModal);
     this->doubleForm.show();
 }
