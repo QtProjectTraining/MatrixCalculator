@@ -149,6 +149,7 @@
     <property name="title">
      <string>帮助</string>
     </property>
+    <addaction name="actionHelp"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -333,6 +334,15 @@
   <action name="number_matrix_action">
    <property name="text">
     <string>数乘矩阵</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/help.png</normaloff>:/icons/images/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>help</string>
    </property>
   </action>
  </widget>

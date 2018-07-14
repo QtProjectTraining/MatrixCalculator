@@ -61,8 +61,18 @@ QString Number_Matrix_Form::open() {
 void Number_Matrix_Form::on_matrix1_button_clicked()
 {
     QString fileName = this->open();
+    if (fileName.isEmpty()) {
+        return;
+    }
     Eigen::MatrixXd mat = MyMatrix::fileToMatrix(fileName);
     this->setMat(mat);
     ui->matrix1_lineEdit->setText(fileName);
     this->Matrix_show("", this->matrix, ui->matrix1_textEdit);
+}
+
+void Number_Matrix_Form::on_res_button_clicked()
+{
+    QString str = ui->number_edit->text().trimmed();
+    double number = str.toDouble();
+    this->Matrix_show("", this->matrix * number, ui->matrix_result_textEdit);
 }

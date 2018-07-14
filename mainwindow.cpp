@@ -278,6 +278,8 @@ void MainWindow::on_double_calculate_action_triggered()
     // 设置后面的页面为不可点击
     this->doubleForm.transMatrixFromMain(this->mat, this->openFileName);
     this->doubleForm.setWindowModality(Qt::ApplicationModal);
+    this->doubleForm.setWindowTitle("zjm");
+
     this->doubleForm.show();
 }
 

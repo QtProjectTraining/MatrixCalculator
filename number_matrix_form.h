@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QTextEdit>
 #include "mymatrix.h"
+#include "iostream"
 
 namespace Ui {
 class Number_Matrix_Form;
@@ -27,6 +28,8 @@ public:
 
 private slots:
     void on_matrix1_button_clicked();
+
+    void on_res_button_clicked();
 
 private:
     Ui::Number_Matrix_Form *ui;

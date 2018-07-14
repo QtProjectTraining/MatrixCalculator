@@ -45,7 +45,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="number_edit">
    <property name="geometry">
     <rect>
      <x>380</x>

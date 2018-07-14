@@ -45,6 +45,9 @@ QString DoubleForm::open() {
 void DoubleForm::on_matrix1_button_clicked()
 {
     QString fileName = this->open();
+    if (fileName.isEmpty()) {
+        return;
+    }
     Eigen::MatrixXd mat1 = MyMatrix::fileToMatrix(fileName);
     this->setMat1(mat1);
     ui->matrix1_lineEdit->setText(fileName);
@@ -108,7 +111,7 @@ void DoubleForm::on_minus_button_clicked()
 //矩阵相乘
 void DoubleForm::on_multiply_button_clicked()
 {
-    if((mat1.cols() == mat2.rows())&&(mat2.cols() == mat1.rows()))
+    if(mat1.cols() == mat2.rows())
         this->Matrix_show("", this->mat1*mat2, ui->matrix_result_textEdit);
     else
         QMessageBox::warning(this, tr("Warning"), tr("Two matrices cannot be multiplied!"));
