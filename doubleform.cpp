@@ -85,5 +85,38 @@ void DoubleForm::transMatrixFromMain(Eigen::MatrixXd matrix, QString fileName) {
              }
          }
      }
-     edit->append(sign + disPlayString);
+     edit->setText(sign + disPlayString);
  }
+//矩阵相加
+void DoubleForm::on_add_button_clicked()
+{
+    if((mat1.cols() == mat2.cols())&&(mat2.rows() == mat1.rows()))
+      this->Matrix_show("", this->mat1+mat2, ui->matrix_result_textEdit);
+    else
+      QMessageBox::warning(this, tr("Warning"), tr("Two matrices cannot be added!"));
+
+}
+//矩阵相减
+void DoubleForm::on_minus_button_clicked()
+{
+    if((mat1.cols() == mat2.cols())&&(mat2.rows() == mat1.rows()))
+         this->Matrix_show("", this->mat1-mat2, ui->matrix_result_textEdit);
+    else
+         QMessageBox::warning(this, tr("Warning"), tr("Two matrices cannot be subtracted!"));
+}
+//矩阵相乘
+void DoubleForm::on_multiply_button_clicked()
+{
+    if((mat1.cols() == mat2.rows())&&(mat2.cols() == mat1.rows()))
+        this->Matrix_show("", this->mat1*mat2, ui->matrix_result_textEdit);
+    else
+        QMessageBox::warning(this, tr("Warning"), tr("Two matrices cannot be multiplied!"));
+}
+//矩阵相除
+void DoubleForm::on_division_button_clicked()
+{
+    if((mat2.cols() == mat2.rows()) && (mat2.determinant()!=0)&& mat2.cols() && mat2.rows())
+       this->Matrix_show("", this->mat1*mat2.inverse(), ui->matrix_result_textEdit);
+    else
+       QMessageBox::warning(this, tr("Warning"), tr("Two matrices cannot be eliminated!"));
+}

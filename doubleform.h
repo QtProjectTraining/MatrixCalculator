@@ -30,6 +30,14 @@ private slots:
 
     void on_matrix2_button_clicked();
 
+    void on_add_button_clicked();
+
+    void on_minus_button_clicked();
+
+    void on_multiply_button_clicked();
+
+    void on_division_button_clicked();
+
 private:
     Ui::DoubleForm *ui;
     Eigen::MatrixXd mat1;

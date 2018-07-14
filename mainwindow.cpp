@@ -202,7 +202,7 @@ void MainWindow::on_determinant_action_triggered()
         QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
         return;
     }
-    if(m!=n)
+    if(this->m != this->n)
     {
         QMessageBox::warning(this, tr("Warning"), tr("No Determinant!"));
         return;
@@ -216,12 +216,11 @@ void MainWindow::on_determinant_action_triggered()
 */
 void MainWindow::on_adjoint_action_triggered()
 {
-
     if(!this->matrix_is_exist()) {
         QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
         return;
     }
-    if(m!=n)
+    if(this->m != this->n)
     {
         QMessageBox::warning(this, tr("Warning"), tr("No adjoint!"));
         return;
@@ -238,7 +237,7 @@ void MainWindow::on_inverse_action_triggered()
         QMessageBox::warning(this, tr("Warning"), tr("Please open a file first!"));
         return;
     }
-    if(m!=n)
+    if((this->m != this->n) || (mat.determinant()==0))
     {
         QMessageBox::warning(this, tr("Warning"), tr("No inverse!"));
         return;
