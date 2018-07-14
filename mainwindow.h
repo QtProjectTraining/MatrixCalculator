@@ -12,6 +12,7 @@
 #include <sstream>
 #include "doubleform.h"
 #include "mymatrix.h"
+#include "number_matrix_form.h"
 
 namespace Ui {
 class MainWindow;
@@ -59,9 +60,12 @@ private slots:
 
     void on_double_calculate_action_triggered();
 
+    void on_number_matrix_action_triggered();
+
 private:
     Ui::MainWindow *ui;
     DoubleForm doubleForm;
+    Number_Matrix_Form number_matrix_form;
     QString openFileName;
     Eigen::MatrixXd mat;
     int m;

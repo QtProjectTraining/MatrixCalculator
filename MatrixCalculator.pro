@@ -16,15 +16,21 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     csv.cpp \
     doubleform.cpp \
-    mymatrix.cpp
+    mymatrix.cpp \
+    oneform.cpp \
+    number_matrix_form.cpp
 
 HEADERS  += mainwindow.h \
     csv.h \
     doubleform.h \
-    mymatrix.h
+    mymatrix.h \
+    oneform.h \
+    number_matrix_form.h
 
 FORMS    += mainwindow.ui \
-    doubleform.ui
+    doubleform.ui \
+    oneform.ui \
+    number_matrix_form.ui
 
 INCLUDEPATH+=C:\eigen-eigen-5a0156e40feb\eigen-eigen-5a0156e40feb\Eigen
 

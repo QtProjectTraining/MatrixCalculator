@@ -142,6 +142,7 @@
     <property name="title">
      <string>双运算</string>
     </property>
+    <addaction name="number_matrix_action"/>
     <addaction name="double_calculate_action"/>
    </widget>
    <widget class="QMenu" name="menu_5">
@@ -327,6 +328,11 @@
    </property>
    <property name="shortcut">
     <string>Alt+C</string>
+   </property>
+  </action>
+  <action name="number_matrix_action">
+   <property name="text">
+    <string>数乘矩阵</string>
    </property>
   </action>
  </widget>

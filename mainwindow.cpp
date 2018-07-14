@@ -270,7 +270,7 @@ void MainWindow::on_matrix_rank_action_triggered()
  }
 
 /*
-* 矩阵四则运算
+* 打开矩阵四则运算窗口
 */
 void MainWindow::on_double_calculate_action_triggered()
 {
@@ -278,4 +278,15 @@ void MainWindow::on_double_calculate_action_triggered()
     this->doubleForm.transMatrixFromMain(this->mat, this->openFileName);
     this->doubleForm.setWindowModality(Qt::ApplicationModal);
     this->doubleForm.show();
+}
+
+/*
+* 打开数乘矩阵窗口
+*/
+void MainWindow::on_number_matrix_action_triggered()
+{
+    // 设置后面的页面为不可点击
+    this->number_matrix_form.transMatrixFromMain(this->mat, this->openFileName);
+    this->number_matrix_form.setWindowModality(Qt::ApplicationModal);
+    this->number_matrix_form.show();
 }
